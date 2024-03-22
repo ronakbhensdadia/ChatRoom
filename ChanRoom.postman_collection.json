@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "da64b49f-6ef8-4441-891a-e5ca25bea26e",
+		"name": "ChanRoom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33665156"
+	},
+	"item": [
+		{
+			"name": "Login Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					},
+					{
+						"key": "pswd",
+						"value": "pwd1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/chat/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Failed Invalid Cred",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "usrNme",
+						"value": "user1111",
+						"type": "text"
+					},
+					{
+						"key": "pswd",
+						"value": "pwd1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/chat/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Failed Empty Cred",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "usrNme",
+						"value": "user1111",
+						"type": "text"
+					},
+					{
+						"key": "pswd",
+						"value": "pwd1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/chat/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "2bd2b846-c8cf-4c0e-92e1-04caab4b1dce",
+						"type": "text"
+					},
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Hello, this is a 3.\",\r\n    \"sender\": \"Ronak3\",\r\n    \"sentAt\": \"2024-03-18T19:00:00\",\r\n    \"chatRoom\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/chat/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Msgs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "2bd2b846-c8cf-4c0e-92e1-04caab4b1dce",
+						"type": "text"
+					},
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/chat/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Msg",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "2bd2b846-c8cf-4c0e-92e1-04caab4b1dce",
+						"type": "text"
+					},
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sender\": \"Ronak3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/chat/deleteMsg/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"deleteMsg",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Msg Invalid Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "2bd2b846-c8cf-4c0e-92e1-04caab4b1dce",
+						"type": "text"
+					},
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sender\": \"Ronak3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/chat/deleteMsg/55555555",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"deleteMsg",
+						"55555555"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Msg Another User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "2bd2b846-c8cf-4c0e-92e1-04caab4b1dce",
+						"type": "text"
+					},
+					{
+						"key": "usrNme",
+						"value": "user1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sender\": \"Ronak33333333333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/chat/deleteMsg/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chat",
+						"deleteMsg",
+						"13"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
