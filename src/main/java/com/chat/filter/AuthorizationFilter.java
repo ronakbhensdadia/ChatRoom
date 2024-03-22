@@ -1,7 +1,6 @@
 package com.chat.filter;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.stream.Stream;
 
 import javax.servlet.FilterChain;
@@ -31,15 +30,19 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
 		if (Stream.of(LoginCredetialEnum.values()).anyMatch(u -> u.getUsername().equals(userName))) {
 			LoginCredetialEnum user = LoginCredetialEnum.valueOf(userName);
-			if (!Objects.isNull(user) && user.getUuid().equalsIgnoreCase(uuid)) {
+			if (user.getUuid().equalsIgnoreCase(uuid)) {
 				filterChain.doFilter(request, response);
+			} else {
+				ErrorResponse error = ErrorResponse.builder().errorCode(HttpStatus.UNAUTHORIZED.value())
+						.errorMsg("User Not Authorized").build();
+				response.getWriter().write(new ObjectMapper().writeValueAsString(error));
+				response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			}
 		} else {
-			ErrorResponse error = ErrorResponse.builder().errorCode(HttpStatus.UNAUTHORIZED.value()).errorMsg("User Not Authorized")
-					.build();
+			ErrorResponse error = ErrorResponse.builder().errorCode(HttpStatus.UNAUTHORIZED.value())
+					.errorMsg("User Not Authorized").build();
 			response.getWriter().write(new ObjectMapper().writeValueAsString(error));
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
-
 		}
 	}
 

@@ -1,6 +1,5 @@
 package com.chat.controller;
 
-import java.util.Objects;
 import java.util.stream.Stream;
 
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class ChatAuthController {
 		// Compare with Hardcoded User credentials
 		if (Stream.of(LoginCredetialEnum.values()).anyMatch(u -> u.getUsername().equals(userName))) {
 			LoginCredetialEnum credential = LoginCredetialEnum.valueOf(userName);
-			if (!Objects.isNull(credential) && credential.getPwd().equals(password)) {
+			if (credential.getPwd().equals(password)) {
 				return new ResponseEntity<>(LoginResponse.builder().uuid(credential.getUuid()).build(), HttpStatus.OK);
 			}
 		}
